@@ -58,6 +58,7 @@ function startgame() {
   disableSelect = false;
   id("chances").textContent = 'Chances remaining : ' + chances;
   //creates board based on the difficulty
+  console.log("working?")
   generateBoard(board);
   //starts timer
   startTimer();
@@ -96,13 +97,14 @@ function timeConversion(time) {
   return minutes + ":" + seconds;
 }
 
-function generateBoard() {
+function generateBoard(board) {
   // clear previous boards
+
   clearPrevious();
   // let used to increment tile ids
   let idCount = 0;
   //create 81 tiles
-  for (let i = 0; i < 81, i++;) {
+  for (let i = 0; i < 81; i++) {
     //create paragraph element
     let tile = document.createElement("p");
     if (board.charAt(i) !== "-") {
@@ -120,7 +122,8 @@ function generateBoard() {
             selectedTile = null;
           } else {
             //deselect all other tiles
-            for (let i = 0; i < 81; i++) {
+            for (let j = 0; j < 81; j++) {
+              // console.log(qsa(".tile"))
               qsa(".tile")[i].classList.remove("selected");
             }
             // add selection and update variable
@@ -137,11 +140,12 @@ function generateBoard() {
     //increment for next tile
     idCount++;
     ////add tile class to all tiles
+
     tile.classList.add("tile");
-    if ((tile.id > 17 && tile.id < 27) || (tile.id > 44 && tile.id < 54)) {
+    if (((tile.id) > 17 && (tile.id) < 27) || ((tile.id) > 44 && (tile.id) < 54)) {
       tile.classList.add("bottomBorder");
     }
-    if ((tile.id + 1) % 9 === 3 || (tile.id + 1) % 9 === 6) {
+    if (((tile.id) + 1) % 9 === 3 || ((tile.id) + 1) % 9 === 6) {
       tile.classList.add("rightborder");
     }
     // add tile to the board
